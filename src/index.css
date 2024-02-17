@@ -11,3 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  width: 100%;
+  /* Make container width fit to screen */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.row {
+  width: 100%;
+  /* Make row fit to container width */
+}
+
+.card {
+  width: calc(30% - 20px);
+  height: 500px;
+  /* Make each card fit 30% of the row with 10% space in between */
+  margin-bottom: 20px;
+  /* Adjust spacing between cards */
+}
+
+.card-img-top {
+  width: 90%;
+  height: 90%;
+}

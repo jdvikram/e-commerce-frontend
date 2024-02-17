@@ -17,6 +17,7 @@ const ProductList = () => {
       try {
         await AuthService.token();
         const token = AuthService.getToken();
+        console.log(token);
         const response = await axios.get(`${API_URL}${PRODUCTS_ENDPOINT}`, {
           headers: {
             Authorization: `Bearer ${token}`
@@ -80,25 +81,25 @@ const ProductList = () => {
 
   return (
     <Slider {...settings}>
-        {products.map((product, index) => (
-            <div key={index} className="col-md-4" productid={product.id}>
-                <div className="product-card">
-                    <div className="product-image" style={{ backgroundImage: `url('${product.image_url}')` }}></div>
-                    <div className="product-details">
-                        <h5 className="mb-0">{product.name}</h5>
-                        <p className="text-muted" categoryid={product.category_id}>Category: {product.category_name}</p>
-                        <p>{product.description}</p>
-                        <p className="font-weight-bold">&#8377;{product.price}</p>
-                        <button className="btn btn-primary btn-block">Add to Cart</button>
-                    </div>
-                </div>
+      {products.map((product, index) => (
+        <div key={index} className="col-md-4" productid={product.id}>
+          <div className="product-card">
+            <div className="product-image" style={{ backgroundImage: `url('${product.image_url}')` }}></div>
+            <div className="product-details">
+              <h5 className="mb-0">{product.name}</h5>
+              <p className="text-muted" categoryid={product.category_id}>Category: {product.category_name}</p>
+              <p>{product.description}</p>
+              <p className="font-weight-bold">&#8377;{product.price}</p>
+              <button className="btn btn-primary btn-block">Add to Cart</button>
             </div>
-        ))}
+          </div>
+        </div>
+      ))}
 
     </Slider>
-    
+
   );
-  
+
 };
 
 export default ProductList;

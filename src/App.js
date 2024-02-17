@@ -1,19 +1,15 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import ProductList from './ProductList';
+import ProductList2 from './ProductList2';
 
 const App = () => {
   return (
     <div>
       <Header />
-      <div className="container mt-5">
-        <div className="row">
-          <div className="col-md-4">
-            <ProductList />
-          </div>
-        </div>
-      </div>
+
+      <ProductList2 />
+
       <Footer />
     </div>
   );
