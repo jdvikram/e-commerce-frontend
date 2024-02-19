@@ -1,22 +1,42 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import ProductList from './ProductList';
+import ProductList2 from './ProductList2';
 
 const App = () => {
   return (
     <div>
       <Header />
-      <div className="container mt-5">
-        <div className="row">
-          <div className="col-md-4">
-            <ProductList />
-          </div>
-        </div>
-      </div>
+
+      <ProductList2 />
+
       <Footer />
     </div>
   );
 };
 
-export default App;
+class Card1 extends React.Component {
+  render() {
+    return (<p>{this.props.name}</p>)
+  }
+};
+
+const App1 = () => {
+  return (
+    <div class="app-content content">
+      <div class="content-area-wrapper">
+        <Header />
+        <div class="sidebar-right">
+          <div class="sidebar">
+            <Card1 name="Some Thing" />
+          </div>
+        </div>
+        <ProductList2 />
+
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default App1;

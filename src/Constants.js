@@ -6,3 +6,4 @@ export const REFRESH_TOKEN_ENDPOINT = '/token/refresh/';
 export const PRODUCTS_ENDPOINT = '/product/';
 export const USERNAME = 'admin';
 export const PASSWORD = 'admin';
+export const CATEGORIS_ENDPOINT = "/category/"

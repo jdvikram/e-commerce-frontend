@@ -11,3 +11,55 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  background-color: pink;
+
+  width: 100%;
+  /* Make container width fit to screen */
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 100px;
+
+}
+
+.row {
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  /* Make row fit to container width */
+}
+
+.card {
+  width: calc(30% - 20px);
+  height: 500px;
+  /* Make each card fit 30% of the row with 10% space in between */
+  margin-bottom: 20px;
+  /* Adjust spacing between cards */
+  background-color: grey;
+  border-color: blue;
+}
+
+.card-img-top {
+  width: 90%;
+  height: 90%;
+  padding: 10%;
+}
+
+.sidebar-right {
+  background-color: blue;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  /* Full height of the viewport */
+  background-color: #f8f9fa;
+  border-left: 1px solid #dee2e6;
+  /* Add border for separation */
+  z-index: 1000;
+  /* Ensure it's above other elements */
+  /* Add any other styles as needed */
+}

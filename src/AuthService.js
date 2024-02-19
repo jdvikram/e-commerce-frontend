@@ -3,7 +3,6 @@
 import axios from 'axios';
 import { API_URL, LOGIN_ENDPOINT, REFRESH_TOKEN_ENDPOINT, USERNAME, PASSWORD } from './Constants';
 
-
 class AuthService {
   async token() {
     try {
@@ -11,6 +10,7 @@ class AuthService {
         username: USERNAME,
         password: PASSWORD
       });
+      console.log(response)
       const token = response.data.access;
       const refreshToken = response.data.refresh;
       localStorage.setItem('token', token);
@@ -35,7 +35,6 @@ class AuthService {
       throw new Error('Failed to refresh token');
     }
   }
-  
 
   logout() {
     localStorage.removeItem('token');
