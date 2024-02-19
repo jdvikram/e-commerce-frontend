@@ -90,7 +90,7 @@ class Card extends React.Component {
                     <h5 class="card-title">{this.props.name}</h5>
                     <p class="card-text">{this.props.description}</p>
                     <h5 class="card-text">Price: {this.props.price} $</h5>
-                    <a href="#" class="btn btn-primary">ADD TO CART</a>
+                    <a href="" class="btn btn-primary">ADD TO CART</a>
                 </div>
             </div>
         );

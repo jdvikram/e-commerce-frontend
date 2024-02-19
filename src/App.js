@@ -15,4 +15,28 @@ const App = () => {
   );
 };
 
-export default App;
+class Card1 extends React.Component {
+  render() {
+    return (<p>{this.props.name}</p>)
+  }
+};
+
+const App1 = () => {
+  return (
+    <div class="app-content content">
+      <div class="content-area-wrapper">
+        <Header />
+        <div class="sidebar-right">
+          <div class="sidebar">
+            <Card1 name="Some Thing" />
+          </div>
+        </div>
+        <ProductList2 />
+
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default App1;
