@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import AuthService from './AuthService'; // Import AuthService
 import ProductList from './ProductList';
+import eventBus from './eventBus';
 
 const ProductList2 = () => {
     const [categories, setCategories] = useState([]);
@@ -29,6 +30,7 @@ const ProductList2 = () => {
                     for (let j = i; j < i + 3 && j < data.length; j++) {
                         inner_item.push(
                             <Card
+                                ID={data[j].id}
                                 name={data[j].name}
                                 description={data[j].description}
                                 url={data[j].image_url}
@@ -81,6 +83,16 @@ class Card extends React.Component {
         super(props); // Call the constructor of the base class (Component) with props
         // Now you can access props using this.props
     }
+    addData = () => {
+        let count = 0
+        if (localStorage["count"]) {
+            count = localStorage["count"];
+        }
+        localStorage["count"] = Number(count) + 1;
+        localStorage.setItem(count, this.props.name + "#" + this.props.url + "#" + this.props.ID)
+        console.log(localStorage)
+        eventBus.publish("dataAdded")
+    };
     render() {
         return (
 
@@ -90,9 +102,9 @@ class Card extends React.Component {
                     <h5 class="card-title">{this.props.name}</h5>
                     <p class="card-text">{this.props.description}</p>
                     <h5 class="card-text">Price: {this.props.price} $</h5>
-                    <a href="" class="btn btn-primary">ADD TO CART</a>
+                    <button class="btn btn-primary" onClick={this.addData}>ADD TO CART</button>
                 </div>
-            </div>
+            </div >
         );
     }
 }
