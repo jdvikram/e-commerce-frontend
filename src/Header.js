@@ -38,7 +38,7 @@ class Newheader extends React.Component {
             <Dropdown />
 
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+              <a class="nav-link" href="/checkout">Checkout Cart</a>
             </li>
           </ul>
 
