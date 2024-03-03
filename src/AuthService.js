@@ -10,7 +10,6 @@ class AuthService {
         username: USERNAME,
         password: PASSWORD
       });
-      console.log(response)
       const token = response.data.access;
       const refreshToken = response.data.refresh;
       localStorage.setItem('token', token);
