@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.footer {
+  position: fixed !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  background-color: #333 !important; /* Change this to your preferred background color */
+  color: white !important; /* Change this to your preferred text color */
+  padding: 20px !important; /* Adjust padding as needed */
+  text-align: center !important;
+}

@@ -1,10 +1,16 @@
-// Footer.js
 import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <footer>
-      <p>&copy; 2022 E-Shopping. All rights reserved.</p>
+    <footer className="mt-auto py-3 bg-light text-black">
+      <Container>
+        <Row>
+          <Col>
+            <p className="text-center" >WorkForME &copy; {new Date().getFullYear()}</p>
+          </Col>
+        </Row>
+      </Container>
     </footer>
   );
 };
