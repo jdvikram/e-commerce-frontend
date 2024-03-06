@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Footer from './Footer';
 import ProductList from './ProductList';
-import CartPage from './CartPage'; // Make sure the import path is correct
 import './App.css';
-
+import CartPage from './CartPage';
 import Header from './Header.js'
 
 const App = () => {

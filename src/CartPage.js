@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchCartData } from './cart';
+import { fetchCartData, handlePayNow } from './cart';
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -28,6 +28,7 @@ const CartPage = () => {
         ))}
       </ul>
       <div style={totalPriceStyle}>Total Price: ₹{calculateTotalPrice().toFixed(2)}</div>
+      <button onClick={handlePayNow} style={payNowButtonStyle}>Pay Now</button>
     </div>
   );
 };
@@ -66,6 +67,17 @@ const totalPriceStyle = {
   marginTop: '20px',
   fontSize: '18px',
   fontWeight: 'bold',
+};
+
+const payNowButtonStyle = {
+  backgroundColor: '#007bff',
+  color: '#fff',
+  border: 'none',
+  borderRadius: '5px',
+  padding: '10px 20px',
+  fontSize: '16px',
+  cursor: 'pointer',
+  marginTop: '20px',
 };
 
 export default CartPage;
