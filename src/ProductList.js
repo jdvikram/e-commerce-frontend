@@ -1,13 +1,11 @@
-// ProductList.js
-
 import React, { useEffect, useState } from 'react';
-import { API_URL, PRODUCTS_ENDPOINT } from './Constants';
 import axios from 'axios';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import AuthService from './AuthService';
 import { addToCart } from './cart';
+import { API_URL, PRODUCTS_ENDPOINT } from './Constants';
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -15,14 +13,14 @@ const ProductList = () => {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const p_url = `${API_URL}${PRODUCTS_ENDPOINT}`
+            const p_url = `${API_URL}${PRODUCTS_ENDPOINT}`;
             try {
                 await AuthService.token();
                 const token = AuthService.getToken();
                 const response = await axios.get(p_url, {
                     headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+                        Authorization: `Bearer ${token}`,
+                    },
                 });
                 setProducts(response.data);
             } catch (error) {
@@ -40,8 +38,8 @@ const ProductList = () => {
                 const newToken = AuthService.getToken();
                 const response = await axios.get(p_url, {
                     headers: {
-                        Authorization: `Bearer ${newToken}`
-                    }
+                        Authorization: `Bearer ${newToken}`,
+                    },
                 });
                 setProducts(response.data);
             } catch (error) {
@@ -53,24 +51,70 @@ const ProductList = () => {
     };
 
     const settings = {
-        dots: true,                 // Show navigation dots
-        infinite: true,             // Infinite loop
-        speed: 500,                 // Transition speed (ms)
-        slidesToShow: 3,            // Number of slides to show at once
-        slidesToScroll: 1,          // Number of slides to scroll at a time
-        centerMode: true,           // Center mode (shows partial slides on the sides)
-        centerPadding: '50px',      // Padding for center mode
-        autoplay: true,             // Auto play slides
-        autoplaySpeed: 3000,        // Auto play speed (ms)
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: '50px',
+        autoplay: true,
+        autoplaySpeed: 3000,
         responsive: [
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 1,      // Adjust slidesToShow for smaller screens
-                    centerMode: false,   // Disable center mode on smaller screens
+                    slidesToShow: 1,
+                    centerMode: false,
                 },
             },
         ],
+        // Custom styles for slick slider
+        customPaging: function (i) {
+            return (
+                <div
+                    style={{
+                        width: '30px',
+                        height: '5px',
+                        background: '#bbb',
+                        borderRadius: '10px',
+                    }}
+                ></div>
+            );
+        },
+        appendDots: (dots) => (
+            <div
+                style={{
+                    bottom: '-25px',
+                    textAlign: 'center',
+                }}
+            >
+                <ul style={{ margin: '0px' }}> {dots} </ul>
+            </div>
+        ),
+    };
+
+    const productCardStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        padding: '10px',
+        boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+        borderRadius: '10px',
+        backgroundColor: '#fff',
+        marginBottom: '20px', // Add margin to bottom
+        border: '1px solid #ddd', // Add border
+    };
+
+    const productImageStyle = {
+        width: '100%',
+        height: '200px',
+        backgroundSize: 'cover',
+        borderRadius: '10px 10px 0 0',
+    };
+
+    const productDetailsStyle = {
+        padding: '10px',
     };
 
     if (error) {
@@ -84,16 +128,21 @@ const ProductList = () => {
     return (
         <Slider {...settings}>
             {products.map((product, index) => (
-                <div key={index} className="col-md-4" productid={product.id}>
-                    <div className="product-card">
-                        <div className="product-image" style={{ backgroundImage: `url('${product.image_url}')` }}></div>
-                        <div className="product-details">
-                            <h5 className="mb-0">{product.name}</h5>
-                            <p className="text-muted" categoryid={product.category_id}>Category: {product.category_name}</p>
-                            <p>{product.description}</p>
-                            <p className="font-weight-bold">&#8377;{product.price}</p>
-                            <button className="btn btn-primary btn-block" onClick={() => addToCart(product)} >Add to Cart</button>
-                        </div>
+                <div key={index} className="product-card" style={productCardStyle}>
+                    <div className="product-image" style={{ ...productImageStyle, backgroundImage: `url('${product.image_url}')` }}></div>
+                    <div className="product-details" style={productDetailsStyle}>
+                        <h5 className="mb-0">{product.name}</h5>
+                        <p className="text-muted" style={{ fontSize: '0.8rem' }}>Category: {product.category_name}</p>
+                        <p style={{ fontSize: '0.9rem' }}>{product.description}</p>
+                        <p className="font-weight-bold" style={{ marginBottom: '10px' }}>&#8377;{product.price}</p>
+                        <button className="btn btn-primary btn-block" onClick={() => addToCart(product)} style={{
+                            border: 'none',
+                            padding: '10px',
+                            borderRadius: '5px',
+                            color: '#fff',
+                            backgroundColor: '#007bff',
+                            cursor: 'pointer',
+                        }}>Add to Cart</button>
                     </div>
                 </div>
             ))}

@@ -1,13 +1,11 @@
-// export default Header;
-
 import React, { useState, useEffect } from 'react';
-import { Navbar, Nav, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { ShoppingCart } from 'lucide-react';
+import { useNavigate, Link } from 'react-router-dom'; // Import useNavigate and Link
 import { fetchCartData, getTotalItemsInCart } from './cart';
 import EventBus from './EventBus'; // Import the event bus
 
 const Header = () => {
-  // State to store cart items
+
   const [cartItems, setCartItems] = useState([]);
   const [message, setMessage] = useState(null);
 
@@ -35,21 +33,54 @@ const Header = () => {
     setMessage(null); // Clear message
   };
 
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
+  // Inline styles
+  const headerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '20px',
+    backgroundColor: '#007BFF',
+    color: 'white',
+    fontFamily: 'Arial, sans-serif',
+  };
+
+  const cartButtonStyle = {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    color: 'white',
+  };
+
+  const cartCountStyle = {
+    background: '#FFC107',
+    color: '#333',
+    borderRadius: '50%',
+    padding: '4px 8px',
+    fontSize: '0.8rem',
+    position: 'absolute',
+    top: '-8px',
+    right: '-8px',
+  };
+
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="/">E-Commerce Store</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="#products">Products</Nav.Link>
-          {/* Display total items in cart */}
-          <Nav.Link as={Link} to="/cart">Cart ({getTotalItemsInCart(cartItems)})</Nav.Link>
-          <Nav.Link href="#about">About</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-      {message && <Alert variant="success" onClose={handleDismiss} dismissible>{message}</Alert>}
-    </Navbar>
+    <header style={headerStyle}>
+      <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>Home</Link> {/* Add home button */}
+      <h1>My Shop</h1>
+      <button
+        style={cartButtonStyle}
+        onMouseOver={(e) => (e.target.style.color = '#FFC107')}
+        onMouseOut={(e) => (e.target.style.color = 'white')}
+        onClick={() => navigate('/cart')} // Add onClick event to navigate
+      >
+        <ShoppingCart size={24} />
+        <span style={cartCountStyle}>{getTotalItemsInCart(cartItems)}</span>
+      </button>
+    </header>
   );
 };
 

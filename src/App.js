@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './Header';
+
 import Footer from './Footer';
 import ProductList from './ProductList';
 import CartPage from './CartPage'; // Make sure the import path is correct
 import './App.css';
+
+import Header from './Header.js'
 
 const App = () => {
   return (
@@ -28,5 +30,11 @@ const App = () => {
     </Router>
   );
 };
+
+// const Test = () => {
+//   return (
+//     <Header2 />
+//   );
+// };
 
 export default App;
