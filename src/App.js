@@ -1,16 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './Header';
+import HeaderWithCart from './Header';
 import Footer from './Footer';
 import ProductList from './ProductList';
 import CartPage from './CartPage'; // Make sure the import path is correct
 import './App.css';
 
+import Header2 from './playground';
+
 const App = () => {
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header2 />
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -26,6 +28,12 @@ const App = () => {
         <Footer />
       </div>
     </Router>
+  );
+};
+
+const Test = () => {
+  return (
+    <Header2 />
   );
 };
 

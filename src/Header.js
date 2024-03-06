@@ -5,7 +5,7 @@ import { Navbar, Nav, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { fetchCartData, getTotalItemsInCart } from './cart';
 import EventBus from './EventBus'; // Import the event bus
-
+import { ShoppingCart } from 'lucide-react';
 const Header = () => {
   // State to store cart items
   const [cartItems, setCartItems] = useState([]);
@@ -53,4 +53,30 @@ const Header = () => {
   );
 };
 
-export default Header;
+//import React, { useState } from 'react';
+
+const HeaderWithCart = () => {
+  const [cartItems, setCartItems] = useState(0);
+
+  // Function to simulate adding item to cart
+  const addItemToCart = () => {
+    setCartItems(cartItems + 1);
+  };
+
+  return (
+    <div className="bg-blue-500 p-4 flex justify-between items-center">
+      <h1 className="text-white font-bold text-xl">Logo</h1>
+      <button
+        onClick={addItemToCart}
+        className="bg-blue-700 text-white flex items-center py-2 px-4 rounded hover:bg-blue-800 focus:outline-none focus:shadow-outline"
+        type="button"
+      >
+        <ShoppingCart className="inline mr-2" /> Cart <span className="ml-2">{cartItems}</span>
+      </button>
+    </div>
+  );
+};
+
+export default HeaderWithCart;
+
+//export default Header;
