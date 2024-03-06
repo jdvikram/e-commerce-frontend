@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Header2 />
+        <Header />
         <div className="container">
           <div className="row">
             <div className="col-md-12">
@@ -31,10 +31,10 @@ const App = () => {
   );
 };
 
-const Test = () => {
-  return (
-    <Header2 />
-  );
-};
+// const Test = () => {
+//   return (
+//     <Header2 />
+//   );
+// };
 
 export default App;
